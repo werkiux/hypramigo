@@ -659,13 +659,11 @@ fi
 #Limpiar pantalla.
 clear
 
-# Script terminado #
-printf "\n${OK} Instalación completa.\n"
-printf "\n"
-read -n1 -rep "${CAT} ¿Le gustaría reiniciar el sistema ahora? (s,n)" Rboot
-if [[ $Rboot =~ ^[Ss]$ ]]; then
-    sudo reboot 2>&1 | tee -a "$LOG"
-    
+#Fin del script.
+read -n1 -rep "La ejecucion del script ha terminado.Te gustaria reiniciar el sistema? (s/n)" rboot
+if [[ $rboot =~ ^[Ss]$ ]]; then
+    reboot
 else
-    print_error "Regresando al simbolo del sistema...\n"
+    echo "Saliendo del script..."
+    exit
 fi
